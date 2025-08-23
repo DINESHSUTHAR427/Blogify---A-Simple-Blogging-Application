@@ -52,19 +52,24 @@ userSchema.pre("save", function(next) {
 });
 
 userSchema.static("matchPasswordAndGenerateToken",async function(email,password){
-   const user = await this.findOne({email});
-   if(!user) throw new Error("user not found");
+   try {
+     const user = await this.findOne({email});
+     if(!user) throw new Error("user not found");
 
-   const salt = user.salt;
-//this password come from when user signup
-   const hashPassword = user.password;
-//from user enter password when user is signup
-   const userProvidedHash = createHmac('sha256', salt).update(password).digest("hex");
-   if(hashPassword !== userProvidedHash )
-      throw new Error("Wrong Password please enter right password");
-   const token = await createTokenforUser(user);
-   console.log("token :" ,token)
-   return token;
+     const salt = user.salt;
+     //this password come from when user signup
+     const hashPassword = user.password;
+     //from user enter password when user is signup
+     const userProvidedHash = createHmac('sha256', salt).update(password).digest("hex");
+     if(hashPassword !== userProvidedHash )
+        throw new Error("Wrong Password please enter right password");
+     const token = await createTokenforUser(user);
+     console.log("token :" ,token)
+     return token;
+   } catch (error) {
+     console.error("Password matching error:", error);
+     throw error; // Re-throw to be handled by the calling function
+   }
 })
 
 const User = model("user",userSchema);

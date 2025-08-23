@@ -36,7 +36,8 @@ router.post("/signup", async (req, res) => {
         res.redirect("/");
     } catch (err) {
         console.error("Signup error:", err);
-        res.status(400).send("Signup failed: " + err.message);
+        const errorMessage = typeof err.message === 'string' ? err.message : JSON.stringify(err);
+        res.status(400).send("Signup failed: " + errorMessage);
     }
 });
 

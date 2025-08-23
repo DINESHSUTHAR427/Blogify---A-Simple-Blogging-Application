@@ -32,11 +32,17 @@ app.use("/blog",blogRouter);
 
 
 app.get("/",async(req,res)=> {
-   const Blogs = await Blog.find({});
-   return res.render("home",{
-     user: req.user || null,
-        blogs : Blogs
-    })
+   try {
+     const Blogs = await Blog.find({});
+     return res.render("home",{
+       user: req.user || null,
+       blogs : Blogs
+     })
+   } catch (error) {
+     console.error("Home page error:", error);
+     const errorMessage = typeof error.message === 'string' ? error.message : JSON.stringify(error);
+     return res.status(500).send("Failed to load home page: " + errorMessage);
+   }
 })
 
 
