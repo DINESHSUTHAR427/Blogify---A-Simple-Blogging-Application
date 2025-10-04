@@ -3,7 +3,8 @@
 A simple and elegant blogging platform built with Node.js, Express, and MongoDB. Blogify allows users to sign up, create beautifully formatted blog posts with cover images, and engage with content through comments.
 
  <!-- Replace with a real screenshot of your app -->
-[ My Application Url => https://blogify-a-simple-blogging-application-1.onrender.com](https://blogify-a-simple-blogging-application-1s6q.onrender.com)
+URl For visit =>  
+blogify-a-simple-blogging-applicati-mu.vercel.app
 
 ## Table of Contents
 
