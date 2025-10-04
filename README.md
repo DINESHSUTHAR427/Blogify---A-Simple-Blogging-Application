@@ -5,6 +5,7 @@ A simple and elegant blogging platform built with Node.js, Express, and MongoDB.
  <!-- Replace with a real screenshot of your app -->
 URl For visit =>  
 blogify-a-simple-blogging-applicati-mu.vercel.app
+https://blogify-a-simple-blogging-applicati-mu.vercel.app/
 
 ## Table of Contents
 
